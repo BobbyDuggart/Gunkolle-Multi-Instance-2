@@ -1,9 +1,9 @@
-global ld_id
+;global nox_id
 global step
 
 init_mouse()
 {
-    ControlGet, ld_id, Hwnd, , RenderWindow1, LDPlayer
+;    ControlGet, nox_id, Hwnd, , ScreenBoardClassWindow, 1STCLIENT
     step := 15
 }
 
@@ -21,31 +21,31 @@ GetLParam(x, y)
 SendMiddleButtonDown(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x207, 0x0010, %lparam%, , ahk_id %ld_id%    
+    PostMessage, 0x207, 0x0010, %lparam%, , 1STCLIENT    
 }
 
 SendMiddleButtonUp(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x208, 0x0000, %lparam%, , ahk_id %ld_id%
+    PostMessage, 0x208, 0x0000, %lparam%, , 1STCLIENT
 }
 
 SendLButtonDown(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x201, 0x0001, %lparam%, , ahk_id %ld_id%
+    PostMessage, 0x201, 0x0001, %lparam%, , 1STCLIENT
 }
 
 SendLButtonUp(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x202, 0, %lparam%, , ahk_id %ld_id%
+    PostMessage, 0x202, 0, %lparam%, , 1STCLIENT
 }
 
 SendMouseMove(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x200, 0x0001, %lparam%, , ahk_id %ld_id%
+    PostMessage, 0x200, 0x0001, %lparam%, , 1STCLIENT
 }
 
 ; Finger on top of the screen, and drag down
@@ -137,7 +137,6 @@ ZoomOut(RepeatCount=1)
     SendMiddleButtonDown(700, 400)
     SendMiddleButtonUp(700, 400)
     Loop, %RepeatCount% {
-        ; not working for ldplayer
         DragRightToLeft(300, 1250, 850)
         sleep 100
     }
@@ -158,7 +157,6 @@ ClickM(x, y, offset=50)
     SendLButtonDown(x, y)
     SendLButtonUp(x, y)
     ; Avoids clicking too fast. Maybe we should randomize this a little bit.
-    ; Has a lower limit, if clicks too fast ldplayer doesnt recognize multiple clicks.
     sleep 150
 }
 ;init_mouse()
