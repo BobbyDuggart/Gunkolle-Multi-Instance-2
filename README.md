@@ -16,10 +16,11 @@ Running from source
 * findclick library by berban (also included)
 * Mouse library by fnzr (included)
 * Playing at 1280 x 720 res
-* Using latest client V2.0416.
+* Using latest Nox client. (Use 6.6.0.0. if the latest version doesn't work).
+* Setting the name of your primary Nox instance to "1STCLIENT".
+* Setting the name of your secondary Nox instance to "2NDCLIENT".
 * Using the uncensored doll pics via recipe (522/320/404/137).
 * Both NVIDIA and AMD graphics cards are working, but AMD users might need to replace some pics.
-* Newer versions of LDPlayer are rumored to have a unwanted files, so use old version or delete fynews.exe, fyservice.exe in ld player directory, and delete fyservice from services via admin CMD - type "SC DELETE fyservice".
 
 THIS SCRIPT IS ONLY TESTED AND MAINTAINED ON WIN10. I may be unable to help you on any other version.
 
@@ -43,16 +44,6 @@ When starting Gunkolle make sure your android emulator is the active window when
 Dont do anything until you see the 'Ready' in the gui box.
 
 Click expedition only and leave window open in background.
-
-To use another emulator, add/create an entry in the config.ini file in the script directory. Use AU3_Spy Window Spy that is included with your AHK installation to determine the window properties.  As shown below (Two valid options are show, **PICK ONE**)-
-
-```
-[Variables]
-WINID=ahk_class Qt5QWindowIcon
-WINID=ahk_exe Nox.exe
-```
-
-You will also likely need to find and replace all existing mentions of LDPlayer in all functions for window to be found. Also the HWND needs replaced in Mouse.ahk. I know it works on LeapDroid and Nox, MuMu doesn't like FindClick when I last tried.
 
 ## How to use: Gunkolle(Sortie)
 read the wiki
@@ -85,7 +76,7 @@ Now replace the text 4_6_data with 4_3E.
 
 3. Making the map. Replace the text 0_2 with 4_3E, and make sure the name of the map you are making stays consistent. 
 
-Next you will need to find coords for the map, so open WindowSpy and make sure LDPlayer is clicked on. The first ClickS coordinate is for selecting the map, so to find the coord you need, hover your mouse over where you want to click and hold ctrl or shift on your keyboard. Then on WindowSpy, under mouse position, copy the coordinates under "Window:" and paste them under the corresponding ClickS() coords for map select. Now your first click is done!
+Next you will need to find coords for the map, so open WindowSpy and make sure NoxPlayer is clicked on. The first ClickS coordinate is for selecting the map, so to find the coord you need, hover your mouse over where you want to click and hold ctrl or shift on your keyboard. Then on WindowSpy, under mouse position, copy the coordinates under "Window:" and paste them under the corresponding ClickS() coords for map select. Now your first click is done!
 
 4. Leave Retirement stuff alone, and move onto when the map is loaded, here the first line will make sure a map is loaded by looking for the pic "Turn". After that, GuiControl is there to tell the user what the script is clicking with ClickS. 
 You will use RFindClick to click on pics that are on all maps, like "OK" and "StartOperation". 

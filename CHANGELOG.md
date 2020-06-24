@@ -1,4 +1,12 @@
 
+#### NoxPlayer Multi Client
+* **_Update_** Deleted half the shit that Dustio added (because I'm too lazy to change it).
+* **_Update_** Doubled most sleep timers.
+* **_Update_** Client now only works with Nox instead of LDPlayer.
+* **_New_** A shiny new icon. Very secretive.
+* **_New_** Client works with Nox multi-instance. Run as many instances of Gunkolle/GFL as you like. 
+* **_Note_** This requires you to rename your Nox instance to "1STCLIENT". To use a 2nd instance, simply copy the first instance in Nox's multi-instance manager and rename it to "2NDCLIENT". Then use the 2nd multi-instance copy of Gunkolle provided. To add more than two clients, open every .ahk file simultaneously in Notepad++ and ctrl+f. Replace every "r1STCLIENT" with "r3RDCLIENT". Then replace every "1STCLIENT" with "3RDCLIENT". Now create a new instance in Nox's multi-instance manager named "3RDCLIENT" and you're done.
+
 #### LDPlayer 0.7.7
 * **_Update_** Compulsory client update to V2.0416.
 * **_Update_** New pics for client update.
