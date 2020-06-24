@@ -20,13 +20,13 @@ ClickS(x,y)
 		{
 			tx := xoff+x
 			ty := yoff+y
-			ControlClick, x%tx% y%ty%, 1STCLIENT,,,,NA Pos
+			ControlClick, x%tx% y%ty%, 2NDCLIENT,,,,NA Pos
 		}
 		else
 		{
 			tx := x-XDiff+xoff
 			ty := y-YDiff+yoff
-			ControlClick, %Class%, 1STCLIENT,,,, x%tx% y%ty%
+			ControlClick, %Class%, 2NDCLIENT,,,, x%tx% y%ty%
 		}
 	}
 	else if Background = 0
@@ -59,7 +59,7 @@ ClickSS(x,y)
 			tx := xoff+x
 			ty := yoff+y
 			loop,10
-			ControlClick, x%tx% y%ty%, 1STCLIENT,,WheelUp,,NA Pos
+			ControlClick, x%tx% y%ty%, 2NDCLIENT,,WheelUp,,NA Pos
 
 		}
 		else
@@ -67,7 +67,7 @@ ClickSS(x,y)
 			tx := x-XDiff+xoff
 			ty := y-YDiff+yoff
 			loop,10
-			ControlClick, %Class%, 1STCLIENT,,WheelUp,, x%tx% y%ty%
+			ControlClick, %Class%, 2NDCLIENT,,WheelUp,, x%tx% y%ty%
 		}
 	}
 	else if Background = 0

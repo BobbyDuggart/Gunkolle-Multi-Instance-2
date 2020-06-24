@@ -3,7 +3,7 @@
 CheckWindow()
 {
 	global
-	IfWinExist, 1STCLIENT
+	IfWinExist, 2NDCLIENT
 	{
 		WinActivateRestore()
 		WinGetPos, , , TWinW, TWinH
@@ -11,8 +11,8 @@ CheckWindow()
 		{
 			GuiControl,, NB, Window size changed, reinitializing pixel map
 			Sleep 1000
-			WinActivate, 1STCLIENT
-			FindClick(A_ScriptDir "\pics\WaitForHome", "r1STCLIENT mc o30 Count1 n0 a1200,,,-600")
+			WinActivate, 2NDCLIENT
+			FindClick(A_ScriptDir "\pics\WaitForHome", "r2NDCLIENT mc o30 Count1 n0 a1200,,,-600")
 ;			RPixelSearch()
 		}
 	}
@@ -62,9 +62,9 @@ SetWindow()
 	{	
 		loop {
 			
-		WinActivate, 1STCLIENT
+		WinActivate, 2NDCLIENT
 		GuiControl,, NB, Return to home screen
-		FoundHomeScreen := FindClick(A_ScriptDir "\pics\WaitForHome", "r1STCLIENT mc o30 Count1 n0 a1200,,,-600")
+		FoundHomeScreen := FindClick(A_ScriptDir "\pics\WaitForHome", "r2NDCLIENT mc o30 Count1 n0 a1200,,,-600")
 		if (FoundHomeScreen=1)
 		{
 			GuiControl,, NB, Found home screen, press Start
@@ -86,13 +86,13 @@ WinActivateRestore(force := 0)
 	global Background
 	global uid
 	
-	WinGet, MMX, MinMax, 1STCLIENT
+	WinGet, MMX, MinMax, 2NDCLIENT
 	if MMX = -1
 	{
 		WinRestore
 		Sleep 500
 	}
-	if WinActive(1STCLIENT)
+	if WinActive(2NDCLIENT)
 	{
 	}
 	else if (Background = 0 or force = 1)

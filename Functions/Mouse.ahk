@@ -3,7 +3,7 @@ global step
 
 init_mouse()
 {
-;    ControlGet, nox_id, Hwnd, , ScreenBoardClassWindow, 1STCLIENT
+;    ControlGet, nox_id, Hwnd, , ScreenBoardClassWindow, 2NDCLIENT
     step := 15
 }
 
@@ -21,31 +21,31 @@ GetLParam(x, y)
 SendMiddleButtonDown(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x207, 0x0010, %lparam%, , 1STCLIENT    
+    PostMessage, 0x207, 0x0010, %lparam%, , 2NDCLIENT    
 }
 
 SendMiddleButtonUp(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x208, 0x0000, %lparam%, , 1STCLIENT
+    PostMessage, 0x208, 0x0000, %lparam%, , 2NDCLIENT
 }
 
 SendLButtonDown(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x201, 0x0001, %lparam%, , 1STCLIENT
+    PostMessage, 0x201, 0x0001, %lparam%, , 2NDCLIENT
 }
 
 SendLButtonUp(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x202, 0, %lparam%, , 1STCLIENT
+    PostMessage, 0x202, 0, %lparam%, , 2NDCLIENT
 }
 
 SendMouseMove(x, y)
 {
     lparam := GetLParam(x, y)
-    PostMessage, 0x200, 0x0001, %lparam%, , 1STCLIENT
+    PostMessage, 0x200, 0x0001, %lparam%, , 2NDCLIENT
 }
 
 ; Finger on top of the screen, and drag down
