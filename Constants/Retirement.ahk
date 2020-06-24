@@ -28,30 +28,30 @@ EnhancementDollSwitcher()
 Retirement()
 {
 Transition("CombatTdollEnhancement","Retirement")
-	sleep 1000
-	RFindClick("Retirement", "rLDPlayer mc o50 w30000,50")
-	sleep 1000
+	sleep 2000
+	RFindClick("Retirement", "r1STCLIENT mc o50 w30000,50")
+	sleep 2000
 	Transition("RetirementNotClicked","RetirementClicked") 
-	RFindClick("TdollRetirementSelect", "rLDPlayer mc o75 w30000,50")
+	RFindClick("TdollRetirementSelect", "r1STCLIENT mc o75 w30000,50")
+	sleep 1500
+	RFindClick("SmartSelect", "r1STCLIENT mc o75 w30000,50")
+	sleep 1500
+	RFindClick("Filter", "r1STCLIENT mc o20 w30000,50")
+	RFindClick("ThreeStar", "r1STCLIENT mc o20 w30000,50")
+	RFindClick("Confirm", "r1STCLIENT mc o20 w30000,50")
 	sleep 500
-	RFindClick("SmartSelect", "rLDPlayer mc o75 w30000,50")
-	sleep 500
-	RFindClick("Filter", "rLDPlayer mc o20 w30000,50")
-	RFindClick("ThreeStar", "rLDPlayer mc o20 w30000,50")
-	RFindClick("Confirm", "rLDPlayer mc o20 w30000,50")
-	sleep 500
-	Found := FindClick(A_ScriptDir "\pics\3STAR", "rLDPlayer mc o50 Count1 n0 w500")
+	Found := FindClick(A_ScriptDir "\pics\3STAR", "r1STCLIENT mc o50 Count1 n0")
 	if Found >= 1
 	{
-	ClickTilGone("3STAR", " rLDPlayer mc o75 w30000,50 sleep100")
+	ClickTilGone("3STAR", " r1STCLIENT mc o75 w30000,50 sleep100")
 	}
 	sleep 500
-	RFindClick("ConfirmRet", "rLDPlayer mc o75 w30000,50")
-	sleep 1000
-	RFindClick("TdollRetirementDismantle", "rLDPlayer mc o75 w30000,50")
-	sleep 500
-	Found := FindClick(A_ScriptDir "\pics\RetireOK", "rLDPlayer mc o50 Count1 n1 w500")
-	Sleep 1000
+	RFindClick("ConfirmRet", "r1STCLIENT mc o75 w30000,50")
+	sleep 1500
+	RFindClick("TdollRetirementDismantle", "r1STCLIENT mc o75 w30000,50")
+	sleep 1500
+	Found := FindClick(A_ScriptDir "\pics\RetireOK", "r1STCLIENT mc o50 Count1 n1")
+	Sleep 3000
 	Transition("BaseNavigation","NavigateCombat")
 	Transition("NavigateCombat","CombatPage")
 }
