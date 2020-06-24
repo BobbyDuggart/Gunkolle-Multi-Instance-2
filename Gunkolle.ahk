@@ -16,7 +16,7 @@ IniRead, Class, config.ini, Variables, Class, 0
 
 Initialize()
 
-IniRead, WINID, config.ini, Variables, 1STCLIENT
+IniRead, WINID, config.ini, Variables, 2NDCLIENT
 
 MiscDelay := 1000
 
@@ -96,7 +96,7 @@ GuiControl, Move, mad, h20 x60 y55 w80
 Menu, Main, Add, Pause, Pause2
 Menu, Main, Add, 0, DN
 Gui, Menu, Main
-Gui, Show, X%TWinX% Y%TWinY% Autosize, //1STCLIENT//
+Gui, Show, X%TWinX% Y%TWinY% Autosize, //2NDCLIENT//
 Gui -AlwaysOnTop
 Gui +AlwaysOnTop
 SetWindow()
@@ -140,8 +140,8 @@ RFindClick(x,y,v*)
 		Found := FindClick(A_ScriptDir "\pics\" x,y " Center x"RandX " y"RandY " n0 count1")
 		if(Found == 0)
 		{
-			FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r1STCLIENT mc o50 Count1")
-			FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "r1STCLIENT mc o40 Count1")
+			FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r2NDCLIENT mc o50 Count1")
+			FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "r2NDCLIENT mc o40 Count1")
 		}
 		else
 		{
@@ -168,11 +168,11 @@ WFindClick(x,y,SearchNumber := 40)
 	RandX += Round((OutX * radius))
 	GuiControl,, NB, %x%
 	Found := 0
-	Found := FindClick(A_ScriptDir "\pics\" x,y " r1STCLIENT mc o"SearchNumber " dtop n0")
+	Found := FindClick(A_ScriptDir "\pics\" x,y " r2NDCLIENT mc o"SearchNumber " dtop n0")
 	while (found == 0) 
 	{
 		SearchNumber:= SearchNumber + 6
-		Found := FindClick(A_ScriptDir "\pics\" x,y " r1STCLIENT mc o"SearchNumber " n0")
+		Found := FindClick(A_ScriptDir "\pics\" x,y " r2NDCLIENT mc o"SearchNumber " n0")
 		GuiControl,, NB, pixel shade offset [%SearchNumber%]
 		if (SearchNumber >= 200)
 		{
@@ -195,7 +195,7 @@ NoStopFindClick(x,y,v*)
 	RandX += Round((OutX * radius))
 	GuiControl,, NB, %x%
 	Found := FindClick(A_ScriptDir "\pics\" x,y " Center x"RandX " y"RandY " n0 count1")
-	Found2:= FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r1STCLIENT mc o50 Center x"RandX " y"RandY "  n0 Count1")
+	Found2:= FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r2NDCLIENT mc o50 Center x"RandX " y"RandY "  n0 Count1")
 	loop, %looper%
 	{
 		if (Found == 1)
@@ -208,8 +208,8 @@ NoStopFindClick(x,y,v*)
 		{
 			while(Found2 != 1)
 			{
-				FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r1STCLIENT mc o50 Center x"RandX " y"RandY "Count1")
-				Found3 := FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "r1STCLIENT mc o40 Center x"RandX " y"RandY "Count1")
+				FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r2NDCLIENT mc o50 Center x"RandX " y"RandY "Count1")
+				Found3 := FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "r2NDCLIENT mc o40 Center x"RandX " y"RandY "Count1")
 			}
 			looper +=1
 		}
@@ -245,12 +245,12 @@ TFindClick(ClickThis,WaitForThis,v*)
 	Random, Sign, -1.0, 1.0
 	RandY += Round((sqrt(1 - OutX ** 2) * radius * Sign)) 
 	RandX += Round((OutX * radius))
-	Found := FindClick(A_ScriptDir "\pics\" WaitForThis, "r1STCLIENT mc o30 Count1 n0")
+	Found := FindClick(A_ScriptDir "\pics\" WaitForThis, "r2NDCLIENT mc o30 Count1 n0")
 	GuiControl,, NB, %ClickThis%
 	While (Found == 0)
 	{
-		FindClick(A_ScriptDir "\pics\"ClickThis, "r1STCLIENT mc o30 Center x"RandX " y"RandY)
-		Found := FindClick(A_ScriptDir "\pics\" WaitForThis, " r1STCLIENT mc o30 Count1 n0 w500,50")
+		FindClick(A_ScriptDir "\pics\"ClickThis, "r2NDCLIENT mc o30 Center x"RandX " y"RandY)
+		Found := FindClick(A_ScriptDir "\pics\" WaitForThis, " r2NDCLIENT mc o30 Count1 n0 w500,50")
 		GuiControl,, NB, Waiting for [%WaitForThis%]
 	}
 }
@@ -265,19 +265,19 @@ Transition(ClickThis,WaitForThis)
 	RandY += Round((sqrt(1 - OutX ** 2) * radius * Sign)) 
 	RandX += Round((OutX * radius))
 	FormatTime, TimeString,% A_NowUTC, HHmm
-	Found := FindClick(A_ScriptDir "\pics\" WaitForThis, "r1STCLIENT mc o40 Count1 n0")
+	Found := FindClick(A_ScriptDir "\pics\" WaitForThis, "r2NDCLIENT mc o40 Count1 n0")
 	While (Found == 0)
 	{
 		sleep 500
-		FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r1STCLIENT mc o50 Center x"RandX " y"RandY)
+		FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r2NDCLIENT mc o50 Center x"RandX " y"RandY)
 		sleep 500
-		FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "r1STCLIENT mc o40 Center x"RandX " y"RandY)
+		FindClick(A_ScriptDir "\pics\ExpeditionConfirm", "r2NDCLIENT mc o40 Center x"RandX " y"RandY)
 		sleep 500
-		FindClick(A_ScriptDir "\pics\"ClickThis, "r1STCLIENT mc o30 Center x"RandX " y"RandY)
+		FindClick(A_ScriptDir "\pics\"ClickThis, "r2NDCLIENT mc o30 Center x"RandX " y"RandY)
 		sleep 500
-		Found := FindClick(A_ScriptDir "\pics\" WaitForThis, " r1STCLIENT mc o40 Count1 n0 w500,50")
+		Found := FindClick(A_ScriptDir "\pics\" WaitForThis, " r2NDCLIENT mc o40 Count1 n0 w500,50")
 		sleep 500
-		Found2:= FindClick(A_ScriptDir "\pics\MissionAccompished", "r1STCLIENT mc o40 Count1 n0")
+		Found2:= FindClick(A_ScriptDir "\pics\MissionAccompished", "r2NDCLIENT mc o40 Count1 n0")
 		sleep 500
 		GuiControl,, NB, Waiting for [%WaitForThis%] | loop counter == %Counter%
 		sleep 500
@@ -286,13 +286,13 @@ Transition(ClickThis,WaitForThis)
 		{
 			Counter = 0
 			GuiControl,, NB, Expedition Found
-			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\Login01", "r1STCLIENT mc o40 Count1 n0 w500")
+			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\Login01", "r2NDCLIENT mc o40 Count1 n0 w500")
 			if (FoundLoginCollectNotice == true)
 			{
 				GuiControl,, NB, Login Collect Found
 				loop, 2
 				{
-				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundAchievement == true)
 					{
 						GuiControl,, NB, Achievement Found
@@ -300,23 +300,23 @@ Transition(ClickThis,WaitForThis)
 						sleep 500
 					}
 				}
-				RFindClick("Login01", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login01", "r2NDCLIENT mc o50 w30000,50")
 				sleep 500
-				FoundDollLogin := FindClick(A_ScriptDir "\pics\DollLogin", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundDollLogin := FindClick(A_ScriptDir "\pics\DollLogin", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundDollLogin == true)
 					{
 						sleep 3000
-						RFindClick("DollDrop", "r1STCLIENT mc o50 w30000,50")
+						RFindClick("DollDrop", "r2NDCLIENT mc o50 w30000,50")
 					}
-				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "r1STCLIENT mc o40 Count1 n1 w500")
+				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "r2NDCLIENT mc o40 Count1 n1 w500")
 				sleep 500
-				RFindClick("Login02", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login02", "r2NDCLIENT mc o50 w30000,50")
 				sleep 1000
-				RFindClick("Login03", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login03", "r2NDCLIENT mc o50 w30000,50")
 				sleep 1000
 				loop, 2
 				{
-				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundAchievement == true)
 					{
 						GuiControl,, NB, Achievement Found
@@ -324,18 +324,18 @@ Transition(ClickThis,WaitForThis)
 						sleep 500
 					}
 				}
-				RFindClick("Login04", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login04", "r2NDCLIENT mc o50 w30000,50")
 				loopcount++
 			}
-			FoundLoginCollectNotice2 := FindClick(A_ScriptDir "\pics\DollDrop", "r1STCLIENT mc o40 Count1 n0 w500")
+			FoundLoginCollectNotice2 := FindClick(A_ScriptDir "\pics\DollDrop", "r2NDCLIENT mc o40 Count1 n0 w500")
 			if (FoundLoginCollectNotice2 == true)
 			{
 				GuiControl,, NB, Login Collect Found
-				RFindClick("DollDrop", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("DollDrop", "r2NDCLIENT mc o50 w30000,50")
 				sleep 500
 				loop, 2
 				{
-				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundAchievement == true)
 					{
 						GuiControl,, NB, Achievement Found
@@ -344,21 +344,21 @@ Transition(ClickThis,WaitForThis)
 					}
 				}
 				sleep 500
-				FoundDollLogin := FindClick(A_ScriptDir "\pics\DollLogin", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundDollLogin := FindClick(A_ScriptDir "\pics\DollLogin", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundDollLogin == true)
 					{
 						sleep 3000
-						RFindClick("DollDrop", "r1STCLIENT mc o50 w30000,50")
+						RFindClick("DollDrop", "r2NDCLIENT mc o50 w30000,50")
 					}
-				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "r1STCLIENT mc o40 Count1 n1 w500")
+				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "r2NDCLIENT mc o40 Count1 n1 w500")
 				sleep 500
-				RFindClick("Login02", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login02", "r2NDCLIENT mc o50 w30000,50")
 				sleep 1000
-				RFindClick("Login03", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login03", "r2NDCLIENT mc o50 w30000,50")
 				sleep 1000
 				loop, 2
 				{
-				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundAchievement == true)
 					{
 						GuiControl,, NB, Achievement Found
@@ -366,23 +366,23 @@ Transition(ClickThis,WaitForThis)
 						sleep 500
 					}
 				}
-				RFindClick("Login04", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login04", "r2NDCLIENT mc o50 w30000,50")
 			}
-			FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0")
+			FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0")
 				if (FoundAchievement == true)
 				{
 					GuiControl,, NB, Achievement Found
 					ClickS(130, 300)
 				}
-			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r1STCLIENT mc o40 Count1 n0")
+			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r2NDCLIENT mc o40 Count1 n0")
 			if (FoundExpedition == true)
 				{
 					GuiControl,, NB, Expedition Found
 					ClickM(740, 530)
 					sleep 1000
-					RFindClick("ExpeditionConfirm", "r1STCLIENT mc o50 w30000,50")
+					RFindClick("ExpeditionConfirm", "r2NDCLIENT mc o50 w30000,50")
 				}
-			FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0")
+			FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0")
 			if (FoundAchievement == true)
 				{
 					GuiControl,, NB, Achievement Found
@@ -394,8 +394,8 @@ Transition(ClickThis,WaitForThis)
 			FoundHome = 0
 			While (FoundHome != true) 
 			{
-				RFindClick := ("\pics\MissionAccompished", "r1STCLIENT mc o40 Count1 n0")
-				FoundHome := FindClick(A_ScriptDir "\pics\WaitForHome", "r1STCLIENT mc o30 w1000,50 Count1 n0 a1200,,,-600")
+				RFindClick := ("\pics\MissionAccompished", "r2NDCLIENT mc o40 Count1 n0")
+				FoundHome := FindClick(A_ScriptDir "\pics\WaitForHome", "r2NDCLIENT mc o30 w1000,50 Count1 n0 a1200,,,-600")
 			}
 			
 		}
@@ -406,26 +406,26 @@ ExpeditionCheck()
 {
 	global
 	GuiControl,, NB, Expedition Check
-	FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0")
+	FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0")
 		if (FoundAchievement == true)
 		{
 			GuiControl,, NB, Achievement Found
 			ClickS(130, 300)
 		}
-	Found := FindClick(A_ScriptDir "\pics\WaitForHome", "r1STCLIENT mc o40 Count1 n0")
+	Found := FindClick(A_ScriptDir "\pics\WaitForHome", "r2NDCLIENT mc o40 Count1 n0")
 	if (Found == 0)
 	{
 		GuiControl,, NB, Wait For Home
 		sleep 750
-		FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r1STCLIENT mc o40 Count1 n0 w750")
+		FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r2NDCLIENT mc o40 Count1 n0 w750")
 		if (FoundExpedition == true)
 			{
 				GuiControl,, NB, Expedition Found
 				ClickM(740, 530)
 				sleep 1000
-				RFindClick("ExpeditionConfirm", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("ExpeditionConfirm", "r2NDCLIENT mc o50 w30000,50")
 			}
-		FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0")
+		FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0")
 		if (FoundAchievement == true)
 			{
 				GuiControl,, NB, Achievement Found
@@ -437,12 +437,12 @@ ExpeditionCheck()
 UpdateEnergy()
 {
 	global
-	FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "r1STCLIENT mc o30 Count1 w15000,50 n0")
+	FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "r2NDCLIENT mc o30 Count1 w15000,50 n0")
 	EnergyCount = 0
-	FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy0", "r1STCLIENT mc o30 Count1 w1000,50 n0")
+	FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy0", "r2NDCLIENT mc o30 Count1 w1000,50 n0")
 	While (FoundEnergy != true) {
 		EnergyCount++
-		FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy" EnergyCount, "r1STCLIENT mc o30 Count1 n0")
+		FoundEnergy := FindClick(A_ScriptDir "\pics\CombatSims\Data\Energy" EnergyCount, "r2NDCLIENT mc o30 Count1 n0")
 	}
 	GuiControl,, NB, EnergyCount == %EnergyCount% CombatSimsData == %CombatSimsData%
 	return EnergyCount
@@ -466,33 +466,33 @@ UpdateEnergy()
 ;			FriendChecker--
 ;			Random, FriendTime, 3000000, 3600000
 ;			SetTimer, FriendFlag, %Friendtime%
-;			RFindClick("Dorm\Dorm", "r1STCLIENT mc o30 w30000,50")
-;			RFindClick("Dorm\Visit", "r1STCLIENT mc o30 w30000,50")
+;			RFindClick("Dorm\Dorm", "r2NDCLIENT mc o30 w30000,50")
+;			RFindClick("Dorm\Visit", "r2NDCLIENT mc o30 w30000,50")
 ;			sleep 100
-;			RFindClick("Dorm\MyFriends", "r1STCLIENT mc o30 w30000,50")
+;			RFindClick("Dorm\MyFriends", "r2NDCLIENT mc o30 w30000,50")
 ;			sleep 250
-;			RFindClick("Dorm\VisitDorm", "r1STCLIENT mc o30 w30000,50")
-;			RFindClick("Dorm\WaitForFriends", "r1STCLIENT mc o30 w30000,50 n0")
+;			RFindClick("Dorm\VisitDorm", "r2NDCLIENT mc o30 w30000,50")
+;			RFindClick("Dorm\WaitForFriends", "r2NDCLIENT mc o30 w30000,50 n0")
 ;			FoundMessage := 0
-;			FoundMessage := FindClick(A_ScriptDir "\pics\Dorm\Message", "r1STCLIENT mc o30 count1 n0")
+;			FoundMessage := FindClick(A_ScriptDir "\pics\Dorm\Message", "r2NDCLIENT mc o30 count1 n0")
 ;			while (FoundMessage == 0)
 ;			{
-;				RFindClick("Dorm\Like", "r1STCLIENT mc o30 w30000,50")
+;				RFindClick("Dorm\Like", "r2NDCLIENT mc o30 w30000,50")
 ;				sleep 500
-;				Found := FindClick(A_ScriptDir "\pics\Dorm\Battery", "r1STCLIENT mc o30 count1 n0")
+;				Found := FindClick(A_ScriptDir "\pics\Dorm\Battery", "r2NDCLIENT mc o30 count1 n0")
 ;				if (Found == 1)
 ;				{
-;					RFindClick("Dorm\Battery", "r1STCLIENT mc o30 w30000,50")
-;					RFindClick("Dorm\BatteryClose", "r1STCLIENT mc o30 w30000,50")
+;					RFindClick("Dorm\Battery", "r2NDCLIENT mc o30 w30000,50")
+;					RFindClick("Dorm\BatteryClose", "r2NDCLIENT mc o30 w30000,50")
 ;				}
-;				RFindClick("Dorm\Next", "r1STCLIENT mc o30 w30000,50")
+;				RFindClick("Dorm\Next", "r2NDCLIENT mc o30 w30000,50")
 ;				sleep 1000
-;				RFindClick("Dorm\WaitForFriends", "r1STCLIENT mc o30 w30000,50 n0")
+;				RFindClick("Dorm\WaitForFriends", "r2NDCLIENT mc o30 w30000,50 n0")
 ;				sleep 200
-;				FoundMessage := FindClick(A_ScriptDir "\pics\Dorm\Message", "r1STCLIENT mc o30 count1 n0 ")
+;				FoundMessage := FindClick(A_ScriptDir "\pics\Dorm\Message", "r2NDCLIENT mc o30 count1 n0 ")
 ;			}
-;			RFindClick("Dorm\Return", "r1STCLIENT mc o30 w30000,50")
-;			RFindClick("Dorm\Exit", "r1STCLIENT mc o30 w30000,50")
+;			RFindClick("Dorm\Return", "r2NDCLIENT mc o30 w30000,50")
+;			RFindClick("Dorm\Exit", "r2NDCLIENT mc o30 w30000,50")
 ;			;ExpeditionCheck()
 ;		}
 ;	}
@@ -520,26 +520,26 @@ UpdateEnergy()
 ;			Random, CombatSimsDataTime, 3600000,  3650000
 ;			SetTimer, CombatSimsDataFlag, %CombatSimsDataTime%
 ;			Transition("Combat","CombatPage")
-;			NoStopFindClick("CombatSims\Data\CombatSims", "r1STCLIENT mc o30 w1000,50")
-;			NoStopFindClick("CombatSims\Data\Training1", "r1STCLIENT mc o30 Count1 w30000,50 n0")
-;			Found := FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "r1STCLIENT mc o30 Count1 n0 w2000")
+;			NoStopFindClick("CombatSims\Data\CombatSims", "r2NDCLIENT mc o30 w1000,50")
+;			NoStopFindClick("CombatSims\Data\Training1", "r2NDCLIENT mc o30 Count1 w30000,50 n0")
+;			Found := FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "r2NDCLIENT mc o30 Count1 n0 w2000")
 ;			if (Found != True){
-;				RFindClick("CombatSims\Data\DataMode", "r1STCLIENT mc o30 w2000,50")
+;				RFindClick("CombatSims\Data\DataMode", "r2NDCLIENT mc o30 w2000,50")
 ;				}
 ;			EnergyCount := UpdateEnergy()
 ;			While (EnergyCount >= CombatSimsData) {
 ;				EnergyCount := UpdateEnergy()
 ;				loop,3 {
 ;					if ((EnergyCount >= CombatSimsData) && (CombatSimsData == A_Index)) {
-;						RFindClick("CombatSims\Data\Training" A_Index, "r1STCLIENT mc o30 Count1 w5000,50")
-;						RFindClick("CombatSims\Data\EnterCombat", "r1STCLIENT mc o30 w5000,50")
-;						RFindClick("CombatSims\Data\Confirm", "r1STCLIENT mc o30 w5000,50")
+;						RFindClick("CombatSims\Data\Training" A_Index, "r2NDCLIENT mc o30 Count1 w5000,50")
+;						RFindClick("CombatSims\Data\EnterCombat", "r2NDCLIENT mc o30 w5000,50")
+;						RFindClick("CombatSims\Data\Confirm", "r2NDCLIENT mc o30 w5000,50")
 ;						;needs a better wait here; perhaps the yellow combat loading screen
 ;						sleep 5000 
 ;						Found := 0
 ;						While (Found != true) {
 ;							ClickS(Homex,Homey)
-;							Found := FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "r1STCLIENT mc o30 Count1 w2000,50 n0")
+;							Found := FindClick(A_ScriptDir "\pics\CombatSims\Data\DataModeClicked", "r2NDCLIENT mc o30 Count1 w2000,50 n0")
 ;						}
 ;						EnergyCount := UpdateEnergy()
 ;						sleep 2000
@@ -554,30 +554,30 @@ UpdateEnergy()
 ;Production()
 ;{
 ;	Global
-;	while (FindClick(A_ScriptDir "\pics\WaitForHome", "r1STCLIENT mc o30 Count1 n0 a1200,,,-600") != 1)
+;	while (FindClick(A_ScriptDir "\pics\WaitForHome", "r2NDCLIENT mc o30 Count1 n0 a1200,,,-600") != 1)
 ;	{
 ;		sleep 1000
 ;		ClickS(Expeditionx,Expeditiony)
 ;	}
-;	Found := FindClick(A_ScriptDir "\pics\Production\FactoryReady", "r1STCLIENT mc o30 n0 count1 a1000,300,,-300")
+;	Found := FindClick(A_ScriptDir "\pics\Production\FactoryReady", "r2NDCLIENT mc o30 n0 count1 a1000,300,,-300")
 ;	GuiControl,, NB, Found something at production.
 ;	if ((ProductionTdoll == 1 || ProductionEquipment == 1) && Found == 1) 
 ;	{
 ;		Transition("Production\FactoryReady","Production\WaitForTdollProduction")
 ;		if (ProductionTdoll == 1)
 ;		{
-;			FoundSlot1 := FindClick(A_ScriptDir "\pics\Production\TdollProductionComplete1", "r1STCLIENT mc o30 n0 count1 w2000,50")
-;			FoundSlot2 := FindClick(A_ScriptDir "\pics\Production\TdollProductionComplete2", "r1STCLIENT mc o30 n0 count1")
-;			FoundSlot3 := FindClick(A_ScriptDir "\pics\Production\TdollProductionComplete3", "r1STCLIENT mc o30 n0 count1")
+;			FoundSlot1 := FindClick(A_ScriptDir "\pics\Production\TdollProductionComplete1", "r2NDCLIENT mc o30 n0 count1 w2000,50")
+;			FoundSlot2 := FindClick(A_ScriptDir "\pics\Production\TdollProductionComplete2", "r2NDCLIENT mc o30 n0 count1")
+;			FoundSlot3 := FindClick(A_ScriptDir "\pics\Production\TdollProductionComplete3", "r2NDCLIENT mc o30 n0 count1")
 ;			loop,3
 ;			{
 ;				ProductionCounter := A_Index
 ;				if (FoundSlot%A_Index% == 1)
 ;				{
-;					RFindClick("Production\TdollProductionComplete"A_Index, "r1STCLIENT mc o30 w30000,50")
+;					RFindClick("Production\TdollProductionComplete"A_Index, "r2NDCLIENT mc o30 w30000,50")
 ;					Loop
 ;					{
-;						if ( FindClick(A_ScriptDir "\pics\Production\TdollProductionStart"ProductionCounter, "r1STCLIENT mc o50 n0 count1") == 1 )
+;						if ( FindClick(A_ScriptDir "\pics\Production\TdollProductionStart"ProductionCounter, "r2NDCLIENT mc o50 n0 count1") == 1 )
 ;						{
 ;							break
 ;						}
@@ -587,30 +587,30 @@ UpdateEnergy()
 ;							sleep 500
 ;						}
 ;					}
-;					RFindClick("Production\TdollProductionStart"A_Index, "r1STCLIENT mc o50 w30000,50")
-;					RFindClick("Production\StartProduction", "r1STCLIENT mc o50 w30000,50")
+;					RFindClick("Production\TdollProductionStart"A_Index, "r2NDCLIENT mc o50 w30000,50")
+;					RFindClick("Production\StartProduction", "r2NDCLIENT mc o50 w30000,50")
 ;					sleep 1000
 ;				}
 ;			}
 ;		}
-;		RFindClick("Production\WaitForTdollProduction", "r1STCLIENT mc o50 w30000,50 n0")
-;		Found := FindClick(A_ScriptDir "\pics\Production\EquipmentReady", "r1STCLIENT mc o50 count1 n0 w2000,50")
+;		RFindClick("Production\WaitForTdollProduction", "r2NDCLIENT mc o50 w30000,50 n0")
+;		Found := FindClick(A_ScriptDir "\pics\Production\EquipmentReady", "r2NDCLIENT mc o50 count1 n0 w2000,50")
 ;		if ( Found == 1)
 ;		{
-;			RFindClick("Production\EquipmentReady", "r1STCLIENT mc o50 w30000,50")
-;			RFindClick("Production\WaitForTdollProduction", "r1STCLIENT mc o50 w30000,50 n0")
-;			FoundSlot1 := FindClick(A_ScriptDir "\pics\Production\EquipmentSlotComplete1", "r1STCLIENT mc o50 n0 count1 w2000,50")
-;			FoundSlot2 := FindClick(A_ScriptDir "\pics\Production\EquipmentSlotComplete2", "r1STCLIENT mc o50 n0 count1")
-;			FoundSlot3 := FindClick(A_ScriptDir "\pics\Production\EquipmentSlotComplete3", "r1STCLIENT mc o50 n0 count1")
+;			RFindClick("Production\EquipmentReady", "r2NDCLIENT mc o50 w30000,50")
+;			RFindClick("Production\WaitForTdollProduction", "r2NDCLIENT mc o50 w30000,50 n0")
+;			FoundSlot1 := FindClick(A_ScriptDir "\pics\Production\EquipmentSlotComplete1", "r2NDCLIENT mc o50 n0 count1 w2000,50")
+;			FoundSlot2 := FindClick(A_ScriptDir "\pics\Production\EquipmentSlotComplete2", "r2NDCLIENT mc o50 n0 count1")
+;			FoundSlot3 := FindClick(A_ScriptDir "\pics\Production\EquipmentSlotComplete3", "r2NDCLIENT mc o50 n0 count1")
 ;			loop,3
 ;			{
 ;				ProductionCounter := A_Index
 ;				if (FoundSlot%A_Index% == 1)
 ;				{
-;					RFindClick("Production\EquipmentSlotComplete"A_Index, "r1STCLIENT mc o50 w30000,50")
+;					RFindClick("Production\EquipmentSlotComplete"A_Index, "r2NDCLIENT mc o50 w30000,50")
 ;					Loop
 ;					{
-;						if ( FindClick(A_ScriptDir "\pics\Production\EquipmentSlotStart"ProductionCounter, "r1STCLIENT mc o50 n0 count1") == 1 )
+;						if ( FindClick(A_ScriptDir "\pics\Production\EquipmentSlotStart"ProductionCounter, "r2NDCLIENT mc o50 n0 count1") == 1 )
 ;						{
 ;							break
 ;						}
@@ -624,44 +624,44 @@ UpdateEnergy()
 ;					}
 ;					if ( ProductionEquipment == 1)
 ;					{
-;						RFindClick("Production\EquipmentSlotStart"A_Index, "r1STCLIENT mc o50 w30000,50")
-;						RFindClick("Production\StartProduction", "r1STCLIENT mc o50 w30000,50")
+;						RFindClick("Production\EquipmentSlotStart"A_Index, "r2NDCLIENT mc o50 w30000,50")
+;						RFindClick("Production\StartProduction", "r2NDCLIENT mc o50 w30000,50")
 ;						sleep 1000
 ;					}
 ;				}
 ;			}
 ;		}
 ;		sleep 1000
-;		RFindClick("FactoryReturn", "r1STCLIENT mc o50 w30000,50")
+;		RFindClick("FactoryReturn", "r2NDCLIENT mc o50 w30000,50")
 ;	}
 ;}
 
 Repair()
 {
 	Global
-	while (FindClick(A_ScriptDir "\pics\WaitForHome", "r1STCLIENT mc o30 Count1 n0 a1200,,,-600") != 1)
+	while (FindClick(A_ScriptDir "\pics\WaitForHome", "r2NDCLIENT mc o30 Count1 n0 a1200,,,-600") != 1)
 ;	{
 ;		GuiControl,, NB, An expedition is returning, retrying every 1
 ;		sleep 1000
 ;		ClickS(Expeditionx,Expeditiony)
 ;	}
 	Found := 0
-	Found := FindClick(A_ScriptDir "\pics\Repair", "r1STCLIENT mc o50 w500,50 Count1 n0 a800,200,-200,-400")
+	Found := FindClick(A_ScriptDir "\pics\Repair", "r2NDCLIENT mc o50 w500,50 Count1 n0 a800,200,-200,-400")
 	if ( Found >= 1)
 	{
 		loop, 5
 		{
 			Transition("Repair","RepairSlot")
 		}
-		RFindClick("RepairSlot", "r1STCLIENT mc o50 w30000,50 a50,100,-1050,-100")
-		RFindClick("RepairSlotWait", "r1STCLIENT mc o30 w30000,50 n0 a0,100,-1000,-300")
+		RFindClick("RepairSlot", "r2NDCLIENT mc o50 w30000,50 a50,100,-1050,-100")
+		RFindClick("RepairSlotWait", "r2NDCLIENT mc o30 w30000,50 n0 a0,100,-1000,-300")
 		sleep 550
-		WFindClick("Damage", "r1STCLIENT mc")
-		RFindClick("RepairOK", "r1STCLIENT mc o50 w30000,50")
-		RFindClick("RepairQuick", "r1STCLIENT mc o50 w30000,50")
-		RFindClick("RepairConfirm", "r1STCLIENT mc o50 w30000,50")
-		RFindClick("RepairReturnFaded", "r1STCLIENT mc o50 w30000,50 ")
-		RFindClick("RepairReturn", "r1STCLIENT mc o50 w30000,50")
+		WFindClick("Damage", "r2NDCLIENT mc")
+		RFindClick("RepairOK", "r2NDCLIENT mc o50 w30000,50")
+		RFindClick("RepairQuick", "r2NDCLIENT mc o50 w30000,50")
+		RFindClick("RepairConfirm", "r2NDCLIENT mc o50 w30000,50")
+		RFindClick("RepairReturnFaded", "r2NDCLIENT mc o50 w30000,50 ")
+		RFindClick("RepairReturn", "r2NDCLIENT mc o50 w30000,50")
 		sleep 2500
 		; ExpeditionCheck("Daily")
 	}
@@ -679,23 +679,23 @@ ReplaceDPS(exhaustedDoll, loadedDoll, resetFilter:=False)
 {
 	Global
 	sleep 2000
-	WFindClick("DollList\"%exhaustedDoll% , "r1STCLIENT mc a125,125,-590,-220", 120) ;select Doll1
+	WFindClick("DollList\"%exhaustedDoll% , "r2NDCLIENT mc a125,125,-590,-220", 120) ;select Doll1
 	;if resetFilter
 	;{
-	;	RFindClick("FilterYellow", "r1STCLIENT mc o20 w30000,50")
-	;	RFindClick("FilterReset", "r1STCLIENT mc o20 w30000,50")
+	;	RFindClick("FilterYellow", "r2NDCLIENT mc o20 w30000,50")
+	;	RFindClick("FilterReset", "r2NDCLIENT mc o20 w30000,50")
 	;}
-	;RFindClick("Filter", "r1STCLIENT mc o50 w30000,50") ; select filter
+	;RFindClick("Filter", "r2NDCLIENT mc o50 w30000,50") ; select filter
 	;if %loadedDoll% in %5Star%
 	;{
-	;	RFindClick("5STAR", "r1STCLIENT mc o50 w10000,50") ;go to formation 
+	;	RFindClick("5STAR", "r2NDCLIENT mc o50 w10000,50") ;go to formation 
 	;}
 	;Else
 	;{
-	;	RFindClick("4STAR", "r1STCLIENT mc o50 w10000,50") ;go to formation 
+	;	RFindClick("4STAR", "r2NDCLIENT mc o50 w10000,50") ;go to formation 
 	;}
-	;RFindClick("Filter"WeaponType, "r1STCLIENT mc o50 w30000,50")	
-	;RFindClick("Confirm", "r1STCLIENT mc o50 w30000,50")
+	;RFindClick("Filter"WeaponType, "r2NDCLIENT mc o50 w30000,50")	
+	;RFindClick("Confirm", "r2NDCLIENT mc o50 w30000,50")
 	sleep 2700
 	GuiControlGet, selectscrollV
 	if (selectscrollV = 1)
@@ -712,16 +712,16 @@ ReplaceDPS(exhaustedDoll, loadedDoll, resetFilter:=False)
 		sleep 3600
 	}
 	sleep 4000
-	WFindClick("DollList\"%loadedDoll% "Profile","r1STCLIENT mc a,130,-200,",120)
+	WFindClick("DollList\"%loadedDoll% "Profile","r2NDCLIENT mc a,130,-200,",120)
 	sleep 2000
-	RFindClick("WaitForFormation", "r1STCLIENT mc o50 w30000,50 n0")
+	RFindClick("WaitForFormation", "r2NDCLIENT mc o50 w30000,50 n0")
 	sleep 2000
 }
 
 ;AddToSecondEchelon(doll, slot)
 ;{
 ;	Global
-;	RFindClick("WaitForFormation", "r1STCLIENT mc o50 w30000,50 n0") ;wait for formation
+;	RFindClick("WaitForFormation", "r2NDCLIENT mc o50 w30000,50 n0") ;wait for formation
 ;	Found := 0
 ;	while(Found == 0)
 ;	{
@@ -738,22 +738,22 @@ ReplaceDPS(exhaustedDoll, loadedDoll, resetFilter:=False)
 ;		{
 ;			ClickS(Role2x,Role1y)
 ;		}	
-;		Found = FindClick(A_ScriptDir "\pics\FilterYellow", "r1STCLIENT mc o20 w30000,50 n0 count1")
+;		Found = FindClick(A_ScriptDir "\pics\FilterYellow", "r2NDCLIENT mc o20 w30000,50 n0 count1")
 ;	}	
-;	RFindClick("FilterYellow", "r1STCLIENT mc o20 w30000,50")
-;	RFindClick("FilterReset", "r1STCLIENT mc o20 w30000,50")
-;	RFindClick("Filter", "r1STCLIENT mc o20 w30000,50")
+;	RFindClick("FilterYellow", "r2NDCLIENT mc o20 w30000,50")
+;	RFindClick("FilterReset", "r2NDCLIENT mc o20 w30000,50")
+;	RFindClick("Filter", "r2NDCLIENT mc o20 w30000,50")
 ;	if %doll% in %5Star%
 ;	{
-;		RFindClick("5STAR", "r1STCLIENT mc o50 w10000,50") 
+;		RFindClick("5STAR", "r2NDCLIENT mc o50 w10000,50") 
 ;	}
 ;	else
 ;	{
-;		RFindClick("4STAR", "r1STCLIENT mc o50 w10000,50") 
+;		RFindClick("4STAR", "r2NDCLIENT mc o50 w10000,50") 
 ;	}
-;	RFindClick("Filter"WeaponType, "r1STCLIENT mc o50 w30000,50")
-;	RFindClick("Confirm", "r1STCLIENT mc o50 w30000,50")
-;	WFindClick("DollList\"%doll% "Profile", "r1STCLIENT mc",120)  ; select Dollportrait1
+;	RFindClick("Filter"WeaponType, "r2NDCLIENT mc o50 w30000,50")
+;	RFindClick("Confirm", "r2NDCLIENT mc o50 w30000,50")
+;	WFindClick("DollList\"%doll% "Profile", "r2NDCLIENT mc",120)  ; select Dollportrait1
 ;}
 
 
@@ -827,14 +827,14 @@ Sortie2:
 		loopcount := 1
 		while (loopcount != 0)
 		{
-			FoundHome := FindClick(A_ScriptDir "\pics\FoundHome", "r1STCLIENT mc o40 Count1 n0 w500")
-			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r1STCLIENT mc o40 Count1 n0 w500")
-;			FoundAutoBattle := FindClick(A_ScriptDir "\pics\AutoBattle", "r1STCLIENT mc o40 Count1 n0 w500")
-			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\Login01", "r1STCLIENT mc o40 Count1 n0")
-			FoundLoginCollectNotice2 := FindClick(A_ScriptDir "\pics\DollLogin", "r1STCLIENT mc o40 Count1 n0")
-			FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0")
-			FoundClose := FindClick(A_ScriptDir "\pics\LostConnection", "r1STCLIENT mc o40 Count1 n0")
-			FoundCrash := FindClick(A_ScriptDir "\pics\Crash", "r1STCLIENT mc o40 Count1 n0")
+			FoundHome := FindClick(A_ScriptDir "\pics\FoundHome", "r2NDCLIENT mc o40 Count1 n0 w500")
+			FoundExpedition := FindClick(A_ScriptDir "\pics\ExpeditionArrive", "r2NDCLIENT mc o40 Count1 n0 w500")
+;			FoundAutoBattle := FindClick(A_ScriptDir "\pics\AutoBattle", "r2NDCLIENT mc o40 Count1 n0 w500")
+			FoundLoginCollectNotice := FindClick(A_ScriptDir "\pics\Login01", "r2NDCLIENT mc o40 Count1 n0")
+			FoundLoginCollectNotice2 := FindClick(A_ScriptDir "\pics\DollLogin", "r2NDCLIENT mc o40 Count1 n0")
+			FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0")
+			FoundClose := FindClick(A_ScriptDir "\pics\LostConnection", "r2NDCLIENT mc o40 Count1 n0")
+			FoundCrash := FindClick(A_ScriptDir "\pics\Crash", "r2NDCLIENT mc o40 Count1 n0")
 			if (FoundHome == true)
 			{
 				GuiControl,, NB,At home
@@ -843,7 +843,7 @@ Sortie2:
 			{
 				GuiControl,, NB, Expedition Found
 				ClickM(740, 530)
-				RFindClick("ExpeditionConfirm", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("ExpeditionConfirm", "r2NDCLIENT mc o50 w30000,50")
 				loopcount++
 			}
 ;			else if (FoundAutoBattle == true)
@@ -851,29 +851,29 @@ Sortie2:
 ;				if (AutoBattleResendV == 1)
 ;				{
 ;				GuiControl,, NB, AutoBattle Found
-;				RFindClick("AutoBattle", "r1STCLIENT mc o50 w30000,50")
+;				RFindClick("AutoBattle", "r2NDCLIENT mc o50 w30000,50")
 ;				sleep 5000
 ;				loop
 ;				{		
-;					Found := FindClick(A_ScriptDir "\pics\AutoBattle", "r1STCLIENT mc o40 Count1 n0 w500")
+;					Found := FindClick(A_ScriptDir "\pics\AutoBattle", "r2NDCLIENT mc o40 Count1 n0 w500")
 ;					if Found >= 1
 ;					{
 ;						break
 ;					}
 ;					else
 ;					{
-;						RFindClick("TdollObtain", "r1STCLIENT mc o50 w30000,50")
+;						RFindClick("TdollObtain", "r2NDCLIENT mc o50 w30000,50")
 ;					}		
 ;				}
-;				RFindClick("AutoBattle", "r1STCLIENT mc o50 w30000,50")
-;				RFindClick("AutoBattleResend", "r1STCLIENT mc o50 w30000,50")
+;				RFindClick("AutoBattle", "r2NDCLIENT mc o50 w30000,50")
+;				RFindClick("AutoBattleResend", "r2NDCLIENT mc o50 w30000,50")
 ;				loopcount++
 ;				}
 ;				else if (AutoBattleResendV == 0)
 ;				{
 ;				GuiControl,, NB, AutoBattle Found
-;				RFindClick("AutoBattle", "r1STCLIENT mc o50 w30000,50")
-;				RFindClick("AutoBattleCancel", "r1STCLIENT mc o50 w30000,50")
+;				RFindClick("AutoBattle", "r2NDCLIENT mc o50 w30000,50")
+;				RFindClick("AutoBattleCancel", "r2NDCLIENT mc o50 w30000,50")
 ;				loopcount++
 ;				}
 ;			}
@@ -882,7 +882,7 @@ Sortie2:
 				GuiControl,, NB, Login Collect Found
 				loop, 2
 				{
-				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundAchievement == true)
 					{
 						GuiControl,, NB, Achievement Found
@@ -890,23 +890,23 @@ Sortie2:
 						sleep 500
 					}
 				}
-				RFindClick("Login01", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login01", "r2NDCLIENT mc o50 w30000,50")
 				sleep 500
-				FoundDollLogin := FindClick(A_ScriptDir "\pics\DollLogin", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundDollLogin := FindClick(A_ScriptDir "\pics\DollLogin", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundDollLogin == true)
 					{
 						sleep 3000
-						RFindClick("DollDrop", "r1STCLIENT mc o50 w30000,50")
+						RFindClick("DollDrop", "r2NDCLIENT mc o50 w30000,50")
 					}
-				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "r1STCLIENT mc o40 Count1 n1 w500")
+				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "r2NDCLIENT mc o40 Count1 n1 w500")
 				sleep 500
-				RFindClick("Login02", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login02", "r2NDCLIENT mc o50 w30000,50")
 				sleep 1000
-				RFindClick("Login03", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login03", "r2NDCLIENT mc o50 w30000,50")
 				sleep 1000
 				loop, 2
 				{
-				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundAchievement == true)
 					{
 						GuiControl,, NB, Achievement Found
@@ -914,18 +914,18 @@ Sortie2:
 						sleep 500
 					}
 				}
-				RFindClick("Login04", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login04", "r2NDCLIENT mc o50 w30000,50")
 				loopcount++
 			}
 			else if (FoundLoginCollectNotice2 == true)
 			{
 				GuiControl,, NB, Login Collect Found
 				sleep 4000
-				RFindClick("DollDrop", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("DollDrop", "r2NDCLIENT mc o50 w30000,50")
 				sleep 500
 				loop, 2
 				{
-				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundAchievement == true)
 					{
 						GuiControl,, NB, Achievement Found
@@ -934,21 +934,21 @@ Sortie2:
 					}
 				}
 				sleep 500
-				FoundDollLogin := FindClick(A_ScriptDir "\pics\DollLogin", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundDollLogin := FindClick(A_ScriptDir "\pics\DollLogin", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundDollLogin == true)
 					{
 						sleep 3000
-						RFindClick("DollDrop", "r1STCLIENT mc o50 w30000,50")
+						RFindClick("DollDrop", "r2NDCLIENT mc o50 w30000,50")
 					}
-				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "r1STCLIENT mc o40 Count1 n1 w500")
+				FoundLogin01 := FindClick(A_ScriptDir "\pics\Login01", "r2NDCLIENT mc o40 Count1 n1 w500")
 				sleep 500
-				RFindClick("Login02", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login02", "r2NDCLIENT mc o50 w30000,50")
 				sleep 1000
-				RFindClick("Login03", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login03", "r2NDCLIENT mc o50 w30000,50")
 				sleep 1000
 				loop, 2
 				{
-				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundAchievement := FindClick(A_ScriptDir "\pics\Achievement", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundAchievement == true)
 					{
 						GuiControl,, NB, Achievement Found
@@ -956,7 +956,7 @@ Sortie2:
 						sleep 500
 					}
 				}
-				RFindClick("Login04", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Login04", "r2NDCLIENT mc o50 w30000,50")
 				loopcount++
 			}
 			else if (FoundAchievement == true)
@@ -967,25 +967,25 @@ Sortie2:
 			}
 			else if (FoundClose == true)
 			{
-				RFindClick("LostConnection", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("LostConnection", "r2NDCLIENT mc o50 w30000,50")
 				GuiControl,, NB, Lost Connection, retrying every 10 mins.
 				sleep 10000
-				FoundUpdate := FindClick(A_ScriptDir "\pics\Update", "r1STCLIENT mc o40 Count1 n0 w500")
+				FoundUpdate := FindClick(A_ScriptDir "\pics\Update", "r2NDCLIENT mc o40 Count1 n0 w500")
 				if (FoundUpdate == true)
 					{
-						RFindClick("Update", "r1STCLIENT mc o50 w30000,50")
+						RFindClick("Update", "r2NDCLIENT mc o50 w30000,50")
 						GuiControl,, NB, Waiting for update...
 					}
 				sleep 590000
-				RFindClick("LoginScreen", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("LoginScreen", "r2NDCLIENT mc o50 w30000,50")
 				sleep 10000
 				loopcount++
 			}
 			else if (FoundCrash == true)
 			{
 				GuiControl,, NB, Client Crashed
-				RFindClick("Crash", "r1STCLIENT mc o50 w30000,50")
-				RFindClick("LoginScreen", "r1STCLIENT mc o50 w30000,50")
+				RFindClick("Crash", "r2NDCLIENT mc o50 w30000,50")
+				RFindClick("LoginScreen", "r2NDCLIENT mc o50 w30000,50")
 				loopcount++
 			}
 			loopcount--
@@ -1090,7 +1090,7 @@ Sortie2:
 
 	; Check expedition
 	; ExpeditionCheck("Daily")
-	; Found := FindClick(A_ScriptDir "\pics\Home", "r1STCLIENT mc o50 Count1 n0 w5000,50")
+	; Found := FindClick(A_ScriptDir "\pics\Home", "r2NDCLIENT mc o50 Count1 n0 w5000,50")
 
 	Sortiecount++
 	ti := BC+1
